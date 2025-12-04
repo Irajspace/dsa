@@ -63,35 +63,7 @@ void precompute() {
 
 
 void solve() {
-   /*
-        x se kahan ja skta hai
-        x/2 
-        ()
  
-   */
-    int n, m;
-    cin >> n >> m;
-    M = m;
-    MOD = m;
-    vector<int> dp(n + 1, 0);
-    int sum = 0;
-    dp[n] = 1;
-    vector<int>suffix(n+2,0);
-    suffix[n]=1;
-    suffix[n+1]=0;
-    for (int i = n-1; i >= 1; i--) {
-        dp[i]=add(dp[i],suffix[i+1]);
-        
-        for(int z=2; z*i<=n; z++)
-        {
-             int l=z*i;
-             int r=min(n,z*(i+1)-1);
-             int range=(suffix[l]-suffix[r+1]+M)%M;
-             dp[i]=add(dp[i],range);
-        }
-        suffix[i]=add(dp[i],suffix[i+1]);
-    }
-    cout << dp[1] << endl;
 
 
 }
