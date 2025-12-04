@@ -39,12 +39,26 @@ void precompute() {
         fact[i] = mul(fact[i - 1], i);
     }
 
-    invFact[N - 1] = inv(fact[N - 1]);        // inv of last factorial
+    invFact[N - 1] = inv(fact[N - 1]);        
     for (int i = N - 2; i >= 0; i--) {
         invFact[i] = mul(invFact[i + 1], i + 1);
     }
 }
+/*
+        what we have learned here?
 
+        whenever there is need for summation for
+        x/z for all 1 to n
+        1) we can do it o(N*(root(N)))
+        2) we can also do o(N log N)
+            we have to think for which values it is giving i
+            z*i<=k<=z*(i+1)-1
+            for all thos values ans will be z only
+            
+
+
+
+*/
 
 
 
@@ -62,16 +76,20 @@ void solve() {
     vector<int> dp(n + 1, 0);
     int sum = 0;
     dp[n] = 1;
-    
-    
-    for (int i = n; i >= 1; i--) {
-        dp[i] = add(dp[i], sum);
+    vector<int>suffix(n+2,0);
+    suffix[n]=1;
+    suffix[n+1]=0;
+    for (int i = n-1; i >= 1; i--) {
+        dp[i]=add(dp[i],suffix[i+1]);
         
-        int curr = i;
-        int div = 2;
-        
-        
-        sum = add(sum, dp[i]);
+        for(int z=2; z*i<=n; z++)
+        {
+             int l=z*i;
+             int r=min(n,z*(i+1)-1);
+             int range=(suffix[l]-suffix[r+1]+M)%M;
+             dp[i]=add(dp[i],range);
+        }
+        suffix[i]=add(dp[i],suffix[i+1]);
     }
     cout << dp[1] << endl;
 
