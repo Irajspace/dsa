@@ -45,7 +45,7 @@ void precompute() {
 }
 
 void solve() {
-    
+    int n;
 }
 
 signed main() {
