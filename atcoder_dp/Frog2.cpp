@@ -45,20 +45,24 @@ void precompute() {
 }
 
 void solve() {
-    int n;
-    cin>>n;
-    vector<int> h(n);
-    for(int i=0;i<n;i++) cin>>h[i];
+    int n,k;
+    cin>>n>>k;
+    vector<int>h(n);
+    for(int i=0; i<n; i++)cin>>h[i];
     vector<int>dp(n,LLONG_MAX);
-    for(int i=0;i<n;i++)
+    for(int i=0; i<n; i++)
     {
         if(i==0)dp[i]=0;
-        else if(i==1)dp[i]=min(dp[i],abs(h[i]-h[i-1]));
-        else dp[i]=min({dp[i],abs(h[i]-h[i-1])+dp[i-1],dp[i-2]+abs(h[i]-h[i-2])});
-
-
+        else{
+            for(int j=i-1;j>=max(i-k,0ll);j--)
+            {
+                dp[i]=min(dp[i],abs(h[i]-h[j])+dp[j]);
+            }
+        }
+        
     }
     cout<<dp[n-1]<<endl;
+
 }
 
 signed main() {
