@@ -46,6 +46,7 @@ void precompute() {
 
 void solve() {
     int n;
+    cin>>n;
 }
 
 signed main() {
