@@ -3,8 +3,8 @@ using namespace std;
 #define int long long
 #define ll long long
 
-const int MOD = 1000000007;
-const int M = 1000000007;
+const int MOD = 998244353;
+const int M = 998244353;
 
 // int MOD;
 // int M;
@@ -45,13 +45,21 @@ void precompute() {
 }
 
 void solve() {
-    string s;
-    cin>>s;
-    int k;
-    cin>>k;
+    int n;
+    cin>>n;
+    vector<int>a(n);
     
-    
+    for(int i=0; i<n; i++){
+         cin>>a[i];
+    }
 
+    vector<vector<int>>dp(5003,vector<int>(5003,0));
+
+    
+   
+
+    
+    
 }
 
 signed main() {
