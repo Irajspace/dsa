@@ -1,3 +1,4 @@
+
 1)For sushi problem in atcoder_dp
    the dp state was 
    dp(i,j,k) be the expected number of additional operations needed to eat all sushi given
@@ -7,4 +8,10 @@
   jab tum expected value nikal rhe hote ho toh ek toh probability hoti hai 
   2nd and foremost imp thing will be kisse multiply krna hota hai
   woh generally count hota hai, prize money hota hai hmesha kuch value hoti hai yaad rkhna
-  
+
+2) for slimes problem in atcoder_dp
+    the dp state was to merge the group of slimes
+    here you cant only merge the leftmost and rightmost slime
+    here you have to consider each and every group that's why
+    dp(l,r)=min(dp(l,r),dp(l,k)+dp(k+1,r)+prefix[r]-prefix[l-1]);
+3)
