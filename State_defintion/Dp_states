@@ -1,0 +1,10 @@
+1)For sushi problem in atcoder_dp
+   the dp state was 
+   dp(i,j,k) be the expected number of additional operations needed to eat all sushi given
+   a) i: The number of dishes with 1 piece of sushi remaining.
+   b) j: The number of dishes with 2 pieces of sushi remaining.
+   c) k: The number of dishes with 3 pieces of sushi remaining.
+  jab tum expected value nikal rhe hote ho toh ek toh probability hoti hai 
+  2nd and foremost imp thing will be kisse multiply krna hota hai
+  woh generally count hota hai, prize money hota hai hmesha kuch value hoti hai yaad rkhna
+  

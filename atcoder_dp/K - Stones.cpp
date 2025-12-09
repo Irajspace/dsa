@@ -43,46 +43,37 @@ void precompute() {
         invFact[i] = mul(invFact[i + 1], i + 1);
     }
 }
-/*
-    dp[i][j][k]=(i/n)*dp[i-1][j][k]+(j/n)*dp[i+1][j-1][k]+k/n*(dp[i][j+1][k-1]+(n-i-j-k)/n*dp[i][j][k])
-    dp[i][j][k]=
-*/
+
 void solve() {
-        int n;
-        cin>>n;
-        vector<int>a(n);
-        int cnt1=0,cnt2=0,cnt3=0;
-        for(int i=0; i<n; i++)
-        {
+    int n,k;
+    cin>>n>>k;
+    vector<int>a(n);
+    for(int i=0; i<n; i++)cin>>a[i];
 
-            cin>>a[i];
-            if(a[i]==1)cnt1++;
-            if(a[i]==2)cnt2++;
-            if(a[i]==3)cnt3++;
-        }
-        vector<vector<vector<double>>>dp(n+1,vector<vector<double>>(n+1,vector<double>(n+1)));
-        dp[0][0][0]=0.0;
-        for(int k=0; k<=n; k++)
+    vector<bool>dp(k+1,0);
+    dp[0]=0;
+    for(int i=0; i<n; i++)
+    {
+        dp[a[i]]=1;
+    }
+    for(int i=1; i<=k; i++)
+    {
+        for(int j=0;j<n;j++)
         {
-            for(int j=0; j<=n; j++)
+            if(i-a[j]>=0)
             {
-                for(int i=0; i<=n; i++)
-                {
-                    if(i==0 && j==0 && k==0)continue;
-                    if(i+j+k>n)continue;
-                    
-                    double value=n;
-                    if(i>0)value+=i*dp[i-1][j][k];
-                    if(j>0)value+=j*dp[i+1][j-1][k];
-                    if(k>0)value+=k*dp[i][j+1][k-1];
+                if(dp[i-a[j]]==0)
+                dp[i]=(dp[i] | 1);
+                
 
-                    dp[i][j][k]=value/(i+j+k);
-                }
+
+                
             }
         }
-        cout<<fixed<<setprecision(12)<<dp[cnt1][cnt2][cnt3]<<endl;
-        
-        
+    }
+    string ans=(dp[k]==1?"First":"Second");
+    cout<<ans<<endl;
+
     
 }
 

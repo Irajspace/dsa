@@ -1,0 +1,8 @@
+1) in the ques of Candies
+   what is the order of next dp , dp, prefix 
+
+   1)so outside the loop take dp store the value for 0
+   2)inside loop declare next_dp and dont make it equal to dp
+   3)prefix make it equal to dp then do the prefix sum
+   4)calculate new value using prefix dp and store it in next_dp
+   5)then dp=next_dp
